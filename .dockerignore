@@ -1,0 +1,10 @@
+build/
+.gradle/
+*.jar
+*.war
+.idea/
+.vscode/
+*.iml
+.git/
+.env
+README.md

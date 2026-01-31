@@ -1,3 +1,20 @@
+server:
+  port: ${PORT:8080}
+
 spring:
   application:
     name: townhall-backend
+
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:validate}
+    properties:
+      hibernate:
+        default_schema: public
+
+  datasource:
+    url: ${DATASOURCE_URL}
+    driver-class-name: org.postgresql.Driver
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
