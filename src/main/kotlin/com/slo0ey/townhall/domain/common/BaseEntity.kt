@@ -1,10 +1,12 @@
 package com.slo0ey.townhall.domain.common
 
+import jakarta.persistence.MappedSuperclass
 import org.hibernate.proxy.HibernateProxy
 import org.springframework.data.domain.Persistable
 import java.io.Serializable
 import java.util.Objects
 
+@MappedSuperclass
 abstract class BaseEntity<T: Serializable>: Persistable<T> {
     abstract var id: T
 
