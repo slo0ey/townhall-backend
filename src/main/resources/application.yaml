@@ -9,6 +9,9 @@ spring:
     database: postgresql
     hibernate:
       ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:validate}
+    properties:
+      hibernate:
+        default_schema: public
 
   datasource:
     url: ${DATASOURCE_URL}
