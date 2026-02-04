@@ -8,8 +8,10 @@ import java.util.Objects
 
 @MappedSuperclass
 abstract class BaseEntity<T: Serializable>: Persistable<T> {
-    abstract var id: T
+    abstract var id: T?
         protected set
+
+    override fun getId(): T? = id
 
     override fun equals(other: Any?): Boolean {
         if (other == null) return false
