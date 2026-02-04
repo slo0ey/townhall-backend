@@ -9,6 +9,7 @@ import java.util.Objects
 @MappedSuperclass
 abstract class BaseEntity<T: Serializable>: Persistable<T> {
     abstract var id: T
+        protected set
 
     override fun equals(other: Any?): Boolean {
         if (other == null) return false
