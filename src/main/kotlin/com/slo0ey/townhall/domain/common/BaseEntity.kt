@@ -1,17 +1,22 @@
 package com.slo0ey.townhall.domain.common
 
+import jakarta.persistence.EntityListeners
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
 import jakarta.persistence.MappedSuperclass
 import org.hibernate.proxy.HibernateProxy
-import org.springframework.data.domain.Persistable
-import java.io.Serializable
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.util.Objects
 
 @MappedSuperclass
-abstract class BaseEntity<T: Serializable>: Persistable<T> {
-    abstract var id: T?
-        protected set
+@EntityListeners(AuditingEntityListener::class)
+abstract class BaseEntity: AuditableEntity() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private var id: Long? = null
 
-    override fun getId(): T? = id
+    override fun getId(): Long? = id
 
     override fun equals(other: Any?): Boolean {
         if (other == null) return false
@@ -25,6 +30,6 @@ abstract class BaseEntity<T: Serializable>: Persistable<T> {
 
     private fun getIdentifier(obj: Any): Any? {
         return if (obj is HibernateProxy) obj.hibernateLazyInitializer.identifier
-        else (obj as BaseEntity<*>).id
+        else (obj as BaseEntity).id
     }
 }
