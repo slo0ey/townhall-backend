@@ -22,7 +22,7 @@ import jakarta.persistence.UniqueConstraint
         Index(name = "idx_post_likes_user_id", columnList = "user_id")
     ]
 )
-class PostLike(
+class PostLikeEntity(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false, foreignKey = ForeignKey(name = "fk_post_likes_post"))
     val post: PostEntity,

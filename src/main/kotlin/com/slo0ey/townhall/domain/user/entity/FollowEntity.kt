@@ -22,7 +22,7 @@ import jakarta.persistence.UniqueConstraint
         Index(name = "idx_follows_following_id", columnList = "following_id")
     ]
 )
-class Follow(
+class FollowEntity(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "follower_id", nullable = false, foreignKey = ForeignKey(name = "fk_follows_follower"))
     val follower: UserEntity,
